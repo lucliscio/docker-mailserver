@@ -14,8 +14,14 @@
       
         <link rel="canonical" href="https://docker-mailserver.github.io/docker-mailserver/edge/config/security/fail2ban/">
       
+      
+        <link rel="prev" href="../ssl/">
+      
+      
+        <link rel="next" href="../mail_crypt/">
+      
       <link rel="icon" href="../../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -23,13 +29,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a7fce14.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
+
     
     
     
@@ -44,10 +50,11 @@
     
       <link rel="stylesheet" href="../../../assets/css/customizations.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -72,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration-files" class="md-skip">
+        <a href="#configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -81,10 +88,8 @@
       
     </div>
     
-      <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
       </div>
     
     
@@ -120,7 +125,6 @@
       <form class="md-header__option" data-md-component="palette">
         
           
-          
           <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -128,7 +132,6 @@
             </label>
           
         
-          
           
           <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -155,7 +158,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,7 +170,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -179,7 +182,7 @@
         <a href="https://github.com/docker-mailserver/docker-mailserver" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     docker-mailserver
@@ -198,7 +201,7 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
@@ -365,7 +368,7 @@
       <a href="https://github.com/docker-mailserver/docker-mailserver" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     docker-mailserver
@@ -433,17 +436,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           Configuration
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Configuration
@@ -470,8 +474,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup.sh/" class="md-nav__link">
-        Your Best Friend setup.sh
+      <a href="../../user-management/" class="md-nav__link">
+        User Management
       </a>
     </li>
   
@@ -487,80 +491,22 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_3">
-          User Management
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          Best Practices
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="User Management" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
-          User Management
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../user-management/accounts/" class="md-nav__link">
-        Accounts
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../user-management/aliases/" class="md-nav__link">
-        Aliases
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_4">
-          Best Practices
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Best Practices" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
-          <span class="md-nav__icon md-icon"></span>
           Best Practices
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
@@ -571,36 +517,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/dkim/" class="md-nav__link">
-        DKIM
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../best-practices/dmarc/" class="md-nav__link">
-        DMARC
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../best-practices/spf/" class="md-nav__link">
-        SPF
+      <a href="../../best-practices/dkim_dmarc_spf/" class="md-nav__link">
+        DKIM, DMARC & SPF
       </a>
     </li>
   
@@ -639,18 +557,19 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_5">
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
           Security
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Security" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           Security
         </label>
@@ -693,7 +612,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
@@ -720,16 +639,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration-files" class="md-nav__link">
-    Configuration files
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Configuration files">
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-compose-config" class="md-nav__link">
-    Docker-compose config
+  <a href="#dms-defaults" class="md-nav__link">
+    DMS Defaults
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-files" class="md-nav__link">
+    Custom Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-all-bans" class="md-nav__link">
+    Viewing All Bans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-bans" class="md-nav__link">
+    Managing Bans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-log-file" class="md-nav__link">
+    Viewing the Log File
   </a>
   
 </li>
@@ -740,56 +687,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-fail2ban-in-a-rootless-container" class="md-nav__link">
-    Running fail2ban in a rootless container
+  <a href="#running-inside-a-rootless-container" class="md-nav__link">
+    Running Inside A Rootless Container
   </a>
-  
-    <nav class="md-nav" aria-label="Running fail2ban in a rootless container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-with-slirp4netns-port-driver" class="md-nav__link">
-    Docker with slirp4netns port driver
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podman-with-slirp4netns-port-driver" class="md-nav__link">
-    Podman with slirp4netns port driver
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#manage-bans" class="md-nav__link">
-    Manage bans
-  </a>
-  
-    <nav class="md-nav" aria-label="Manage bans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#list-bans" class="md-nav__link">
-    List bans
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#un-ban" class="md-nav__link">
-    Un-ban
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -842,43 +742,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_6">
-          Troubleshooting
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_6">
-          <span class="md-nav__icon md-icon"></span>
-          Troubleshooting
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../debugging/" class="md-nav__link">
         Debugging
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -903,21 +770,38 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../setup.sh/" class="md-nav__link">
+        About setup.sh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_8">
+        <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
           Advanced Configuration
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Advanced Configuration" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_8">
           <span class="md-nav__icon md-icon"></span>
           Advanced Configuration
@@ -947,17 +831,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8_2" type="checkbox" id="__nav_4_8_2" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_2" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_8_2">
+        <label class="md-nav__link" for="__nav_4_8_2" id="__nav_4_8_2_label" tabindex="0">
           Maintenance
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Maintenance" data-md-level="3">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_8_2">
           <span class="md-nav__icon md-icon"></span>
           Maintenance
@@ -994,17 +881,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8_3" type="checkbox" id="__nav_4_8_3" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_3" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_8_3">
+        <label class="md-nav__link" for="__nav_4_8_3" id="__nav_4_8_3_label" tabindex="0">
           Override the Default Configs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Override the Default Configs" data-md-level="3">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_8_3">
           <span class="md-nav__icon md-icon"></span>
           Override the Default Configs
@@ -1107,22 +997,39 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../advanced/mail-getmail/" class="md-nav__link">
+        Email Gathering with Getmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8_7" type="checkbox" id="__nav_4_8_7" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_8" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_8_7">
+        <label class="md-nav__link" for="__nav_4_8_8" id="__nav_4_8_8_label" tabindex="0">
           Email Forwarding
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Email Forwarding" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_8_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_8_8">
           <span class="md-nav__icon md-icon"></span>
           Email Forwarding
         </label>
@@ -1257,17 +1164,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           Examples
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Examples
@@ -1283,17 +1193,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5_1">
+        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
           Tutorials
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           Tutorials
@@ -1372,17 +1285,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5_2">
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Use Cases
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Use Cases" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5_2">
           <span class="md-nav__icon md-icon"></span>
           Use Cases
@@ -1456,17 +1372,20 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
           Contributing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Contributing
@@ -1578,16 +1497,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration-files" class="md-nav__link">
-    Configuration files
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Configuration files">
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-compose-config" class="md-nav__link">
-    Docker-compose config
+  <a href="#dms-defaults" class="md-nav__link">
+    DMS Defaults
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-files" class="md-nav__link">
+    Custom Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-all-bans" class="md-nav__link">
+    Viewing All Bans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-bans" class="md-nav__link">
+    Managing Bans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-log-file" class="md-nav__link">
+    Viewing the Log File
   </a>
   
 </li>
@@ -1598,56 +1545,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-fail2ban-in-a-rootless-container" class="md-nav__link">
-    Running fail2ban in a rootless container
+  <a href="#running-inside-a-rootless-container" class="md-nav__link">
+    Running Inside A Rootless Container
   </a>
-  
-    <nav class="md-nav" aria-label="Running fail2ban in a rootless container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-with-slirp4netns-port-driver" class="md-nav__link">
-    Docker with slirp4netns port driver
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podman-with-slirp4netns-port-driver" class="md-nav__link">
-    Podman with slirp4netns port driver
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#manage-bans" class="md-nav__link">
-    Manage bans
-  </a>
-  
-    <nav class="md-nav" aria-label="Manage bans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#list-bans" class="md-nav__link">
-    List bans
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#un-ban" class="md-nav__link">
-    Un-ban
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1659,138 +1559,137 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-  <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/config/security/fail2ban.md" title="Edit this page" class="md-content__button md-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+                  
 
-
-
-  <h1>Fail2Ban</h1>
-
-<p>Fail2Ban is installed automatically and bans IP addresses for 3 hours after 3 failed attempts in 10 minutes by default.</p>
-<h2 id="configuration-files"><a class="toclink" href="#configuration-files">Configuration files</a></h2>
-<p>If you want to change this, you can easily edit our github example file: <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/config-examples/fail2ban-jail.cf"><code>config-examples/fail2ban-jail.cf</code></a>.</p>
-<p>You can do the same with the values from <code>fail2ban.conf</code>, e.g <code>dbpurgeage</code>. In that case you need to edit: <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/config-examples/fail2ban-fail2ban.cf"><code>config-examples/fail2ban-fail2ban.cf</code></a>.</p>
-<p>The configuration files need to be located at the root of the <code>/tmp/docker-mailserver/</code> volume bind (usually <code>./docker-data/dms/config/:/tmp/docker-mailserver/</code>).</p>
-<p>This following configuration files from <code>/tmp/docker-mailserver/</code> will be copied during container startup.</p>
-<ul>
-<li><code>fail2ban-jail.cf</code> -&gt; <code>/etc/fail2ban/jail.d/user-jail.local</code></li>
-<li><code>fail2ban-fail2ban.cf</code> -&gt; <code>/etc/fail2ban/fail2ban.local</code></li>
-</ul>
-<h3 id="docker-compose-config"><a class="toclink" href="#docker-compose-config">Docker-compose config</a></h3>
-<p>Example configuration volume bind:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./docker-data/dms/config/:/tmp/docker-mailserver/</span><span class="w"></span>
-</code></pre></div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p><code>docker-mailserver</code> must be launched with the <code>NET_ADMIN</code> capability in order to be able to install the nftables rules that actually ban IP addresses.</p>
-<p>Thus either include <code>--cap-add=NET_ADMIN</code> in the <code>docker run</code> command, or the equivalent in <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">cap_add</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span><span class="w"></span>
-</code></pre></div>
-</div>
-<h2 id="running-fail2ban-in-a-rootless-container"><a class="toclink" href="#running-fail2ban-in-a-rootless-container">Running fail2ban in a rootless container</a></h2>
-<p><a href="https://github.com/rootless-containers/rootlesskit"><code>RootlessKit</code></a> is the <em>fakeroot</em> implementation for supporting <em>rootless mode</em> in Docker and Podman. By default RootlessKit uses the <a href="https://github.com/rootless-containers/rootlesskit/blob/v0.14.5/docs/port.md#port-drivers"><code>builtin</code> port forwarding driver</a>, which does not propagate source IP addresses.</p>
-<p>It is necessary for <code>fail2ban</code> to have access to the real source IP addresses in order to correctly identify clients. This is achieved by changing the port forwarding driver to <a href="https://github.com/rootless-containers/slirp4netns"><code>slirp4netns</code></a>, which is slower than <code>builtin</code> but does preserve the real source IPs.</p>
-<h3 id="docker-with-slirp4netns-port-driver"><a class="toclink" href="#docker-with-slirp4netns-port-driver">Docker with <code>slirp4netns</code> port driver</a></h3>
-<p>For <a href="https://docs.docker.com/engine/security/rootless">rootless mode</a> in Docker, create <code>~/.config/systemd/user/docker.service.d/override.conf</code> with the following content:</p>
-<div class="highlight"><pre><span></span><code>[Service]
-Environment=&quot;DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns&quot;
-</code></pre></div>
-<p>And then restart the daemon:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>systemctl --user daemon-reload
-<span class="gp">$ </span>systemctl --user restart docker
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This changes the port driver for all rootless containers managed by Docker.</p>
-<p>Per container configuration is not supported, if you need that consider Podman instead.</p>
-</div>
-<h3 id="podman-with-slirp4netns-port-driver"><a class="toclink" href="#podman-with-slirp4netns-port-driver">Podman with <code>slirp4netns</code> port driver</a></h3>
-<p><a href="https://github.com/containers/podman/blob/v3.4.1/docs/source/markdown/podman-run.1.md#--networkmode---net">Rootless Podman</a> requires adding the value <code>slirp4netns:port_handler=slirp4netns</code> to the <code>--network</code> CLI option, or <code>network_mode</code> setting in your <code>docker-compose.yml</code>.</p>
-<p>You must also add the ENV <code>NETWORK_INTERFACE=tap0</code>, because Podman uses a <a href="https://github.com/containers/podman/blob/v3.4.1/libpod/networking_slirp4netns.go#L264">hard-coded interface name</a> for <code>slirp4netns</code>.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">mailserver</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slirp4netns:port_handler=slirp4netns&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_FAIL2BAN=1</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_INTERFACE=tap0</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>slirp4netns</code> is not compatible with user-defined networks.</p>
-</div>
-<h2 id="manage-bans"><a class="toclink" href="#manage-bans">Manage bans</a></h2>
-<p>You can also manage and list the banned IPs with the <a href="../../setup.sh/"><code>setup.sh</code></a> script.</p>
-<h3 id="list-bans"><a class="toclink" href="#list-bans">List bans</a></h3>
-<div class="highlight"><pre><span></span><code>./setup.sh fail2ban
-</code></pre></div>
-<h3 id="un-ban"><a class="toclink" href="#un-ban">Un-ban</a></h3>
-<p>Here <code>192.168.1.15</code> is our banned IP.</p>
-<div class="highlight"><pre><span></span><code>./setup.sh fail2ban unban <span class="m">192</span>.168.1.15
-</code></pre></div>
-
-              
-            </article>
-            
-          </div>
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
-        
-      </main>
+  
+    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/config/security/fail2ban.md" title="Edit this page" class="md-content__button md-icon">
       
-        <footer class="md-footer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
   
     
       
     
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+    <a href="https://github.com/docker-mailserver/docker-mailserver/raw/master/docs/content/config/security/fail2ban.md" title="View source of this page" class="md-content__button md-icon">
       
-        
-        <a href="../ssl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSL/TLS" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              SSL/TLS
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>Fail2Ban</h1>
+
+<div class="admonition quote">
+<p class="admonition-title">What is Fail2Ban (F2B)?</p>
+<p>Fail2ban is an intrusion prevention software framework. Written in the Python programming language, it is designed to prevent against brute-force attacks. It is able to run on POSIX systems that have an interface to a packet-control system or firewall installed locally, such as [NFTables] or TCP Wrapper.</p>
+<p><a href="https://en.wikipedia.org/wiki/Fail2ban">Source</a></p>
+</div>
+<h2 id="configuration"><a class="toclink" href="#configuration">Configuration</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DMS must be launched with the <code>NET_ADMIN</code> capability in order to be able to install the NFTables rules that actually ban IP addresses. Thus, either include <code>--cap-add=NET_ADMIN</code> in the <code>docker run</code> command, or the equivalent in the <code>compose.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">cap_add</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+</code></pre></div>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Running Fail2Ban on Older Kernels</p>
+<p>DMS configures F2B to use NFTables, not IPTables (legacy). We have observed that older systems, for example NAS systems, do not support the modern NFTables rules. You will need to configure F2B to use legacy IPTables again, for example with the <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/config-examples/fail2ban-jail.cf"><code>fail2ban-jail.cf</code></a>, see the <a href="#custom-files">section on configuration further down below</a>.</p>
+</div>
+<h3 id="dms-defaults"><a class="toclink" href="#dms-defaults">DMS Defaults</a></h3>
+<p>DMS will automatically ban IP addresses of hosts that have generated 6 failed attempts over the course of the last week. The bans themselves last for one week. The Postfix jail is configured to use <code>mode = extra</code> in DMS.</p>
+<h3 id="custom-files"><a class="toclink" href="#custom-files">Custom Files</a></h3>
+<div class="admonition question">
+<p class="admonition-title">What is <a href="../../../faq/#what-about-the-docker-datadmsconfig-directory"><code>docker-data/dms/config/</code></a>?</p>
+</div>
+<p>This following configuration files inside the <code>docker-data/dms/config/</code> volume will be copied inside the container during startup</p>
+<ol>
+<li><code>fail2ban-jail.cf</code> is copied to <code>/etc/fail2ban/jail.d/user-jail.local</code><ul>
+<li>with this file, you can adjust the configuration of individual jails and their defaults</li>
+<li>there is an example provided <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/config-examples/fail2ban-jail.cf">in our repository on GitHub</a></li>
+</ul>
+</li>
+<li><code>fail2ban-fail2ban.cf</code> is copied to <code>/etc/fail2ban/fail2ban.local</code><ul>
+<li>with this file, you can adjust F2B behavior in general</li>
+<li>there is an example provided <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/config-examples/fail2ban-fail2ban.cf">in our repository on GitHub</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="viewing-all-bans"><a class="toclink" href="#viewing-all-bans">Viewing All Bans</a></h3>
+<p>When just running</p>
+<div class="highlight"><pre><span></span><code>setup<span class="w"> </span>fail2ban
+</code></pre></div>
+<p>the script will show all banned IP addresses.</p>
+<h3 id="managing-bans"><a class="toclink" href="#managing-bans">Managing Bans</a></h3>
+<p>You can manage F2B with the <code>setup</code> script. The usage looks like this:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;CONTAINER<span class="w"> </span>NAME&gt;<span class="w"> </span>setup<span class="w"> </span>fail2ban<span class="w"> </span><span class="o">[</span>&lt;ban<span class="p">|</span>unban&gt;<span class="w"> </span>&lt;IP&gt;<span class="o">]</span>
+</code></pre></div>
+<h3 id="viewing-the-log-file"><a class="toclink" href="#viewing-the-log-file">Viewing the Log File</a></h3>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;CONTAINER<span class="w"> </span>NAME&gt;<span class="w"> </span>setup<span class="w"> </span>fail2ban<span class="w"> </span>log
+</code></pre></div>
+<h2 id="running-inside-a-rootless-container"><a class="toclink" href="#running-inside-a-rootless-container">Running Inside A Rootless Container</a></h2>
+<p><a href="https://github.com/rootless-containers/rootlesskit"><code>RootlessKit</code></a> is the <em>fakeroot</em> implementation for supporting <em>rootless mode</em> in Docker and Podman. By default, RootlessKit uses the <a href="https://github.com/rootless-containers/rootlesskit/blob/v0.14.5/docs/port.md#port-drivers"><code>builtin</code> port forwarding driver</a>, which does not propagate source IP addresses.</p>
+<p>It is necessary for F2B to have access to the real source IP addresses in order to correctly identify clients. This is achieved by changing the port forwarding driver to <a href="https://github.com/rootless-containers/slirp4netns"><code>slirp4netns</code></a>, which is slower than the builtin driver but does preserve the real source IPs.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Docker</label><label for="__tabbed_1_2">Podman</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>For <a href="https://docs.docker.com/engine/security/rootless">rootless mode</a> in Docker, create <code>~/.config/systemd/user/docker.service.d/override.conf</code> with the following content:</p>
+<div class="admonition danger inline end">
+<p class="admonition-title">Danger</p>
+<p>This changes the port driver for all rootless containers managed by Docker. Per container configuration is not supported, if you need that consider Podman instead.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
+<span class="na">Environment</span><span class="o">=</span><span class="s">&quot;DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns&quot;</span>
+</code></pre></div>
+<p>And then restart the daemon:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+<span class="gp">$ </span>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><a href="https://github.com/containers/podman/blob/v3.4.1/docs/source/markdown/podman-run.1.md#--networkmode---net">Rootless Podman</a> requires adding the value <code>slirp4netns:port_handler=slirp4netns</code> to the <code>--network</code> CLI option, or <code>network_mode</code> setting in your <code>compose.yaml</code>:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mailserver</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slirp4netns:port_handler=slirp4netns&quot;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_FAIL2BAN=1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_INTERFACE=tap0</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+</div>
+<p>You must also add the ENV <code>NETWORK_INTERFACE=tap0</code>, because Podman uses a <a href="https://github.com/containers/podman/blob/v3.4.1/libpod/networking_slirp4netns.go#L264">hard-coded interface name</a> for <code>slirp4netns</code>. <code>slirp4netns</code> is not compatible with user-defined networks!</p>
+</div>
+</div>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
             </div>
-          </div>
-        </a>
-      
-      
+          
+          
+        </div>
         
-        <a href="../mail_crypt/" class="md-footer__link md-footer__link--next" aria-label="Next: Mail Encryption" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Mail Encryption
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
       
-    </nav>
+        <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1816,10 +1715,11 @@ Environment=&quot;DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns&quot;
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>
