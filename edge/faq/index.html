@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A fullstack but simple mail-server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.) using Docker.">
+        <meta name="description" content="A fullstack but simple mail-server (SMTP, IMAP, LDAP, Anti-spam, Anti-virus, etc.) using Docker.">
       
       
         <meta name="author" content="docker-mailserver (Github Organization)">
@@ -15,13 +15,14 @@
         <link rel="canonical" href="https://docker-mailserver.github.io/docker-mailserver/edge/faq/">
       
       
-        <link rel="prev" href="../examples/use-cases/imap-folders/">
+        <link rel="prev" href="../examples/use-cases/external-relay-only-mailserver/">
       
       
         <link rel="next" href="../contributing/general/">
       
+      
       <link rel="icon" href="../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
     
     
       
@@ -29,14 +30,17 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -70,9 +74,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -103,6 +104,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
+      
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
@@ -122,29 +124,39 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
-            </label>
-          
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
@@ -153,12 +165,15 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -182,7 +197,7 @@
         <a href="https://github.com/docker-mailserver/docker-mailserver" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     docker-mailserver
@@ -207,50 +222,15 @@
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../introduction/" class="md-tabs__link">
-      Introduction
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../usage/" class="md-tabs__link">
-      Usage
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../config/environment/" class="md-tabs__link">
-        Configuration
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
       </a>
     </li>
   
@@ -259,23 +239,79 @@
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
 
+      </a>
+    </li>
+  
 
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../usage/" class="md-tabs__link">
+        
+  
+    
+  
+  Usage
+
+      </a>
+    </li>
+  
+
+      
+        
   
   
   
     
+    
+      <li class="md-tabs__item">
+        <a href="../config/environment/" class="md-tabs__link">
+          
+  
+  Configuration
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../examples/tutorials/basic-installation/" class="md-tabs__link">
-        Examples
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/tutorials/basic-installation/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+    
   
 
       
@@ -284,26 +320,15 @@
   
     
   
-
-
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      FAQ
-    </a>
-  </li>
-
-      
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
+    
   
+  FAQ
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../contributing/general/" class="md-tabs__link">
-        Contributing
       </a>
     </li>
   
@@ -312,25 +337,53 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contributing/general/" class="md-tabs__link">
+          
+  
+  Contributing
 
-
-  <li class="md-tabs__item">
-    <a href="https://hub.docker.com/r/mailserver/docker-mailserver/" class="md-tabs__link">
-      DockerHub
-    </a>
-  </li>
+        </a>
+      </li>
+    
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="https://hub.docker.com/r/mailserver/docker-mailserver/" class="md-tabs__link">
+        
+  
+    
+  
+  <span class="icon-external-link"></span>DockerHub
 
+      </a>
+    </li>
+  
 
-  <li class="md-tabs__item">
-    <a href="https://github.com/docker-mailserver/docker-mailserver/pkgs/container/docker-mailserver" class="md-tabs__link">
-      GHCR
-    </a>
-  </li>
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://github.com/docker-mailserver/docker-mailserver/pkgs/container/docker-mailserver" class="md-tabs__link">
+        
+  
+    
+  
+  <span class="icon-external-link"></span>GHCR
+
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -349,6 +402,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -366,7 +420,7 @@
       <a href="https://github.com/docker-mailserver/docker-mailserver" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     docker-mailserver
@@ -378,14 +432,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Home
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
     </li>
   
@@ -393,14 +452,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../introduction/" class="md-nav__link">
-        Introduction
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
       </a>
     </li>
   
@@ -408,14 +472,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../usage/" class="md-nav__link">
-        Usage
+        
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
       </a>
     </li>
   
@@ -423,849 +492,1370 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-          Configuration
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Configuration
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/environment/" class="md-nav__link">
-        Environment Variables
+        
+  
+  <span class="md-ellipsis">
+    Environment Variables
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/user-management/" class="md-nav__link">
-        User Management
+        
+  
+  <span class="md-ellipsis">
+    User Management
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-          Best Practices
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_3">
-          <span class="md-nav__icon md-icon"></span>
-          Best Practices
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
-              
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../config/best-practices/dkim_dmarc_spf/" class="md-nav__link">
-        DKIM, DMARC & SPF
-      </a>
-    </li>
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
   
 
-            
-          
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Best Practices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/best-practices/autodiscover/" class="md-nav__link">
-        Auto-discovery
+        
+  
+  <span class="md-ellipsis">
+    Auto-discovery
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/best-practices/dkim_dmarc_spf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DKIM, DMARC & SPF
+  </span>
+  
+
+      </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/best-practices/mta-sts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTA-STS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-          Security
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_4">
-          <span class="md-nav__icon md-icon"></span>
-          Security
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/security/understanding-the-ports/" class="md-nav__link">
-        Understanding the Ports
+        
+  
+  <span class="md-ellipsis">
+    Understanding the Ports
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/security/ssl/" class="md-nav__link">
-        SSL/TLS
+        
+  
+  <span class="md-ellipsis">
+    SSL/TLS
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/security/fail2ban/" class="md-nav__link">
-        Fail2Ban
+        
+  
+  <span class="md-ellipsis">
+    Fail2Ban
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/security/mail_crypt/" class="md-nav__link">
-        Mail Encryption
+        
+  
+  <span class="md-ellipsis">
+    Mail Encryption
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/security/rspamd/" class="md-nav__link">
-        Rspamd
+        
+  
+  <span class="md-ellipsis">
+    Rspamd
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/debugging/" class="md-nav__link">
-        Debugging
+        
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/pop3/" class="md-nav__link">
-        Mail Delivery with POP3
+        
+  
+  <span class="md-ellipsis">
+    Mail Delivery with POP3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/setup.sh/" class="md-nav__link">
-        About setup.sh
+        
+  
+  <span class="md-ellipsis">
+    About setup.sh
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
-          Advanced Configuration
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_8">
-          <span class="md-nav__icon md-icon"></span>
-          Advanced Configuration
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/optional-config/" class="md-nav__link">
-        Optional Configuration
+        
+  
+  <span class="md-ellipsis">
+    Optional Configuration
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8_2" id="__nav_4_8_2_label" tabindex="0">
-          Maintenance
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_8_2">
-          <span class="md-nav__icon md-icon"></span>
-          Maintenance
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_2" id="__nav_4_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maintenance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/maintenance/update-and-cleanup/" class="md-nav__link">
-        Update and Cleanup
+        
+  
+  <span class="md-ellipsis">
+    Update and Cleanup
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8_3" id="__nav_4_8_3_label" tabindex="0">
-          Override the Default Configs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_8_3">
-          <span class="md-nav__icon md-icon"></span>
-          Override the Default Configs
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_3" id="__nav_4_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Override the Default Configs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Override the Default Configs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/override-defaults/dovecot/" class="md-nav__link">
-        Dovecot
+        
+  
+  <span class="md-ellipsis">
+    Dovecot
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/override-defaults/postfix/" class="md-nav__link">
-        Postfix
+        
+  
+  <span class="md-ellipsis">
+    Postfix
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/override-defaults/user-patches/" class="md-nav__link">
-        Modifications via Script
+        
+  
+  <span class="md-ellipsis">
+    Modifications via Script
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/auth-ldap/" class="md-nav__link">
-        LDAP Authentication
+        
+  
+  <span class="md-ellipsis">
+    LDAP Authentication
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/advanced/auth-oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OAuth2 Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/mail-sieve/" class="md-nav__link">
-        Email Filtering with Sieve
+        
+  
+  <span class="md-ellipsis">
+    Email Filtering with Sieve
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/mail-fetchmail/" class="md-nav__link">
-        Email Gathering with Fetchmail
+        
+  
+  <span class="md-ellipsis">
+    Email Gathering with Fetchmail
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/mail-getmail/" class="md-nav__link">
-        Email Gathering with Getmail
+        
+  
+  <span class="md-ellipsis">
+    Email Gathering with Getmail
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8_8" id="__nav_4_8_8_label" tabindex="0">
-          Email Forwarding
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_8_8">
-          <span class="md-nav__icon md-icon"></span>
-          Email Forwarding
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8_9" id="__nav_4_8_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Email Forwarding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_9">
+            <span class="md-nav__icon md-icon"></span>
+            Email Forwarding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/mail-forwarding/relay-hosts/" class="md-nav__link">
-        Relay Hosts
+        
+  
+  <span class="md-ellipsis">
+    Relay Hosts
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/mail-forwarding/aws-ses/" class="md-nav__link">
-        AWS SES
+        
+  
+  <span class="md-ellipsis">
+    AWS SES
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/advanced/mail-forwarding/gmail-smtp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Gmail as a relay host
+  </span>
+  
+
+      </a>
     </li>
   
 
+              
             
-          
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/full-text-search/" class="md-nav__link">
-        Full-Text Search
+        
+  
+  <span class="md-ellipsis">
+    Full-Text Search
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/kubernetes/" class="md-nav__link">
-        Kubernetes
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/ipv6/" class="md-nav__link">
-        IPv6
+        
+  
+  <span class="md-ellipsis">
+    IPv6
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/podman/" class="md-nav__link">
-        Podman
+        
+  
+  <span class="md-ellipsis">
+    Podman
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../config/advanced/dovecot-master-accounts/" class="md-nav__link">
-        Dovecot Master Accounts
+        
+  
+  <span class="md-ellipsis">
+    Dovecot Master Accounts
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
+  
+  
+  
+  
+    
+    
+    
       
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
       
       
-      
-      
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-          Examples
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Examples
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
-          Tutorials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5_1">
-          <span class="md-nav__icon md-icon"></span>
-          Tutorials
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/tutorials/basic-installation/" class="md-nav__link">
-        Basic Installation
+        
+  
+  <span class="md-ellipsis">
+    Basic Installation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/tutorials/mailserver-behind-proxy/" class="md-nav__link">
-        Mailserver behind Proxy
+        
+  
+  <span class="md-ellipsis">
+    Mailserver behind Proxy
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/tutorials/crowdsec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crowdsec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/tutorials/docker-build/" class="md-nav__link">
-        Building your own Docker image
+        
+  
+  <span class="md-ellipsis">
+    Building your own Docker image
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/tutorials/blog-posts/" class="md-nav__link">
-        Blog Posts
+        
+  
+  <span class="md-ellipsis">
+    Blog Posts
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
-          Use Cases
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5_2">
-          <span class="md-nav__icon md-icon"></span>
-          Use Cases
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/use-cases/forward-only-mailserver-with-ldap-authentication/" class="md-nav__link">
-        Forward-Only Mail-Server with LDAP
+        
+  
+  <span class="md-ellipsis">
+    Forward-Only Mail-Server with LDAP
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../examples/use-cases/imap-folders/" class="md-nav__link">
-        Customize IMAP Folders
+        
+  
+  <span class="md-ellipsis">
+    Customize IMAP Folders
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/use-cases/ios-mail-push-support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iOS Mail Push Support
+  </span>
+  
+
+      </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/use-cases/auth-lua/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lua Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/use-cases/bind-smtp-network-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bind outbound SMTP to a specific network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/use-cases/external-relay-only-mailserver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relay inbound and outbound mail for an internal DMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -1275,12 +1865,24 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          FAQ
+          
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        FAQ
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
       </a>
       
         
@@ -1298,42 +1900,54 @@
       
         <li class="md-nav__item">
   <a href="#what-kind-of-database-are-you-using" class="md-nav__link">
-    What kind of database are you using?
+    <span class="md-ellipsis">
+      What kind of database are you using?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#where-are-emails-stored" class="md-nav__link">
-    Where are emails stored?
+    <span class="md-ellipsis">
+      Where are emails stored?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-are-imap-mailboxes-aka-imap-folders-set-up" class="md-nav__link">
-    How are IMAP mailboxes (aka IMAP Folders) set up?
+    <span class="md-ellipsis">
+      How are IMAP mailboxes (aka IMAP Folders) set up?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-do-i-update-dms" class="md-nav__link">
-    How do I update DMS?
+    <span class="md-ellipsis">
+      How do I update DMS?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#which-operating-systems-are-supported" class="md-nav__link">
-    Which operating systems are supported?
+    <span class="md-ellipsis">
+      Which operating systems are supported?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-are-the-system-requirements" class="md-nav__link">
-    What are the system requirements?
+    <span class="md-ellipsis">
+      What are the system requirements?
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="What are the system requirements?">
@@ -1341,14 +1955,18 @@
         
           <li class="md-nav__item">
   <a href="#recommended" class="md-nav__link">
-    Recommended
+    <span class="md-ellipsis">
+      Recommended
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#minimum" class="md-nav__link">
-    Minimum
+    <span class="md-ellipsis">
+      Minimum
+    </span>
   </a>
   
 </li>
@@ -1360,35 +1978,54 @@
       
         <li class="md-nav__item">
   <a href="#how-to-alter-a-running-dms-instance-without-relaunching-the-container" class="md-nav__link">
-    How to alter a running DMS instance without relaunching the container?
+    <span class="md-ellipsis">
+      How to alter a running DMS instance without relaunching the container?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-sync-the-container-and-host-datetime" class="md-nav__link">
-    How can I sync the container and host date/time?
+    <span class="md-ellipsis">
+      How can I sync the container and host date/time?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-about-dns-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      What About DNS Servers?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-is-the-file-format" class="md-nav__link">
-    What is the file format?
+    <span class="md-ellipsis">
+      What is the file format?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#do-you-support-multiple-domains" class="md-nav__link">
-    Do you support multiple domains?
+    <span class="md-ellipsis">
+      Do you support multiple domains?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-about-backups" class="md-nav__link">
-    What about backups?
+    <span class="md-ellipsis">
+      What about backups?
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="What about backups?">
@@ -1396,14 +2033,18 @@
         
           <li class="md-nav__item">
   <a href="#bind-mounts-default" class="md-nav__link">
-    Bind mounts (default)
+    <span class="md-ellipsis">
+      Bind mounts (default)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#volumes" class="md-nav__link">
-    Volumes
+    <span class="md-ellipsis">
+      Volumes
+    </span>
   </a>
   
 </li>
@@ -1415,70 +2056,90 @@
       
         <li class="md-nav__item">
   <a href="#i-want-to-know-more-about-the-ports" class="md-nav__link">
-    I Want to Know More About the Ports
+    <span class="md-ellipsis">
+      I Want to Know More About the Ports
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-configure-my-email-client" class="md-nav__link">
-    How can I configure my email client?
+    <span class="md-ellipsis">
+      How can I configure my email client?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#can-i-use-a-nakedbare-domain-ie-no-hostname" class="md-nav__link">
-    Can I use a naked/bare domain (i.e. no hostname)?
+    <span class="md-ellipsis">
+      Can I use a naked/bare domain (i.e. no hostname)?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-configure-a-catch-all" class="md-nav__link">
-    How can I configure a catch-all?
+    <span class="md-ellipsis">
+      How can I configure a catch-all?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-delete-all-the-emails-for-a-specific-user" class="md-nav__link">
-    How can I delete all the emails for a specific user?
+    <span class="md-ellipsis">
+      How can I delete all the emails for a specific user?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-kind-of-ssl-certificates-can-i-use" class="md-nav__link">
-    What kind of SSL certificates can I use?
+    <span class="md-ellipsis">
+      What kind of SSL certificates can I use?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#i-just-moved-from-my-old-mail-server-to-dms-but-it-doesnt-work" class="md-nav__link">
-    I just moved from my old mail server to DMS, but "it doesn't work"?
+    <span class="md-ellipsis">
+      I just moved from my old mail server to DMS, but "it doesn't work"?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#connection-refused-or-no-response-at-all" class="md-nav__link">
-    Connection refused or No response at all
+    <span class="md-ellipsis">
+      Connection refused or No response at all
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-authenticate-users-with-smtp_only1" class="md-nav__link">
-    How can I authenticate users with SMTP_ONLY=1?
+    <span class="md-ellipsis">
+      How can I authenticate users with SMTP_ONLY=1?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#common-errors" class="md-nav__link">
-    Common Errors
+    <span class="md-ellipsis">
+      Common Errors
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Common Errors">
@@ -1486,7 +2147,9 @@
         
           <li class="md-nav__item">
   <a href="#creating-an-alias-or-account-with-an-address-for-hostname" class="md-nav__link">
-    Creating an alias or account with an address for hostname
+    <span class="md-ellipsis">
+      Creating an alias or account with an address for hostname
+    </span>
   </a>
   
 </li>
@@ -1498,69 +2161,63 @@
       
         <li class="md-nav__item">
   <a href="#how-to-use-dms-behind-a-proxy" class="md-nav__link">
-    How to use DMS behind a proxy
+    <span class="md-ellipsis">
+      How to use DMS behind a proxy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-restrict-login-by-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to restrict login by IP?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-to-adjust-settings-with-the-user-patchessh-script" class="md-nav__link">
-    How to adjust settings with the user-patches.sh script
+    <span class="md-ellipsis">
+      How to adjust settings with the user-patches.sh script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-to-ban-custom-ip-addresses-with-fail2ban" class="md-nav__link">
-    How to ban custom IP addresses with Fail2ban
+    <span class="md-ellipsis">
+      How to ban custom IP addresses with Fail2ban
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-to-do-in-case-of-spfforwarding-problems" class="md-nav__link">
-    What to do in case of SPF/Forwarding problems
+    <span class="md-ellipsis">
+      What to do in case of SPF/Forwarding problems
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#why-are-my-emails-not-being-delivered" class="md-nav__link">
-    Why are my emails not being delivered?
+    <span class="md-ellipsis">
+      Why are my emails not being delivered?
+    </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#special-directories" class="md-nav__link">
-    Special Directories
-  </a>
-  
-    <nav class="md-nav" aria-label="Special Directories">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-docker-datadmsconfig-directory" class="md-nav__link">
-    What About the docker-data/dms/config/ Directory?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-docker-datadmsmail-state-directory" class="md-nav__link">
-    What About the docker-data/dms/mail-state/ Directory?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#spamassasin" class="md-nav__link">
-    SpamAssasin
+    <span class="md-ellipsis">
+      SpamAssasin
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="SpamAssasin">
@@ -1568,35 +2225,45 @@
         
           <li class="md-nav__item">
   <a href="#how-can-i-manage-my-custom-spamassassin-rules" class="md-nav__link">
-    How can I manage my custom SpamAssassin rules?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-are-acceptable-sa_spam_subject-values" class="md-nav__link">
-    What are acceptable SA_SPAM_SUBJECT values?
+    <span class="md-ellipsis">
+      How can I manage my custom SpamAssassin rules?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#why-are-spamassassin-x-headers-not-inserted-into-my-subdomainexamplecom-subdomain-emails" class="md-nav__link">
-    Why are SpamAssassin x-headers not inserted into my subdomain.example.com subdomain emails?
+    <span class="md-ellipsis">
+      Why are SpamAssassin x-headers not inserted into my subdomain.example.com subdomain emails?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#how-can-i-make-spamassassin-better-recognize-spam" class="md-nav__link">
-    How can I make SpamAssassin better recognize spam?
+    <span class="md-ellipsis">
+      How can I make SpamAssassin better recognize spam?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#how-do-i-have-more-control-about-what-spamassassin-is-filtering" class="md-nav__link">
-    How do I have more control about what SpamAssassin is filtering?
+    <span class="md-ellipsis">
+      How do I have more control about what SpamAssassin is filtering?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-send-quarantined-mail-to-a-mailbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I send quarantined mail to a mailbox?
+    </span>
   </a>
   
 </li>
@@ -1616,93 +2283,129 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
         
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-          Contributing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Contributing
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../contributing/general/" class="md-nav__link">
-        General Information
+        
+  
+  <span class="md-ellipsis">
+    General Information
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../contributing/tests/" class="md-nav__link">
-        Tests
+        
+  
+  <span class="md-ellipsis">
+    Tests
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../contributing/issues-and-pull-requests/" class="md-nav__link">
-        Issues and Pull Requests
+        
+  
+  <span class="md-ellipsis">
+    Issues and Pull Requests
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="https://hub.docker.com/r/mailserver/docker-mailserver/" class="md-nav__link">
-        DockerHub
+        
+  
+  <span class="md-ellipsis">
+    <span class="icon-external-link"></span>DockerHub
+  </span>
+  
+
       </a>
     </li>
   
@@ -1710,14 +2413,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="https://github.com/docker-mailserver/docker-mailserver/pkgs/container/docker-mailserver" class="md-nav__link">
-        GHCR
+        
+  
+  <span class="md-ellipsis">
+    <span class="icon-external-link"></span>GHCR
+  </span>
+  
+
       </a>
     </li>
   
@@ -1749,42 +2457,54 @@
       
         <li class="md-nav__item">
   <a href="#what-kind-of-database-are-you-using" class="md-nav__link">
-    What kind of database are you using?
+    <span class="md-ellipsis">
+      What kind of database are you using?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#where-are-emails-stored" class="md-nav__link">
-    Where are emails stored?
+    <span class="md-ellipsis">
+      Where are emails stored?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-are-imap-mailboxes-aka-imap-folders-set-up" class="md-nav__link">
-    How are IMAP mailboxes (aka IMAP Folders) set up?
+    <span class="md-ellipsis">
+      How are IMAP mailboxes (aka IMAP Folders) set up?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-do-i-update-dms" class="md-nav__link">
-    How do I update DMS?
+    <span class="md-ellipsis">
+      How do I update DMS?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#which-operating-systems-are-supported" class="md-nav__link">
-    Which operating systems are supported?
+    <span class="md-ellipsis">
+      Which operating systems are supported?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-are-the-system-requirements" class="md-nav__link">
-    What are the system requirements?
+    <span class="md-ellipsis">
+      What are the system requirements?
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="What are the system requirements?">
@@ -1792,14 +2512,18 @@
         
           <li class="md-nav__item">
   <a href="#recommended" class="md-nav__link">
-    Recommended
+    <span class="md-ellipsis">
+      Recommended
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#minimum" class="md-nav__link">
-    Minimum
+    <span class="md-ellipsis">
+      Minimum
+    </span>
   </a>
   
 </li>
@@ -1811,35 +2535,54 @@
       
         <li class="md-nav__item">
   <a href="#how-to-alter-a-running-dms-instance-without-relaunching-the-container" class="md-nav__link">
-    How to alter a running DMS instance without relaunching the container?
+    <span class="md-ellipsis">
+      How to alter a running DMS instance without relaunching the container?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-sync-the-container-and-host-datetime" class="md-nav__link">
-    How can I sync the container and host date/time?
+    <span class="md-ellipsis">
+      How can I sync the container and host date/time?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-about-dns-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      What About DNS Servers?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-is-the-file-format" class="md-nav__link">
-    What is the file format?
+    <span class="md-ellipsis">
+      What is the file format?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#do-you-support-multiple-domains" class="md-nav__link">
-    Do you support multiple domains?
+    <span class="md-ellipsis">
+      Do you support multiple domains?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-about-backups" class="md-nav__link">
-    What about backups?
+    <span class="md-ellipsis">
+      What about backups?
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="What about backups?">
@@ -1847,14 +2590,18 @@
         
           <li class="md-nav__item">
   <a href="#bind-mounts-default" class="md-nav__link">
-    Bind mounts (default)
+    <span class="md-ellipsis">
+      Bind mounts (default)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#volumes" class="md-nav__link">
-    Volumes
+    <span class="md-ellipsis">
+      Volumes
+    </span>
   </a>
   
 </li>
@@ -1866,70 +2613,90 @@
       
         <li class="md-nav__item">
   <a href="#i-want-to-know-more-about-the-ports" class="md-nav__link">
-    I Want to Know More About the Ports
+    <span class="md-ellipsis">
+      I Want to Know More About the Ports
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-configure-my-email-client" class="md-nav__link">
-    How can I configure my email client?
+    <span class="md-ellipsis">
+      How can I configure my email client?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#can-i-use-a-nakedbare-domain-ie-no-hostname" class="md-nav__link">
-    Can I use a naked/bare domain (i.e. no hostname)?
+    <span class="md-ellipsis">
+      Can I use a naked/bare domain (i.e. no hostname)?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-configure-a-catch-all" class="md-nav__link">
-    How can I configure a catch-all?
+    <span class="md-ellipsis">
+      How can I configure a catch-all?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-delete-all-the-emails-for-a-specific-user" class="md-nav__link">
-    How can I delete all the emails for a specific user?
+    <span class="md-ellipsis">
+      How can I delete all the emails for a specific user?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-kind-of-ssl-certificates-can-i-use" class="md-nav__link">
-    What kind of SSL certificates can I use?
+    <span class="md-ellipsis">
+      What kind of SSL certificates can I use?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#i-just-moved-from-my-old-mail-server-to-dms-but-it-doesnt-work" class="md-nav__link">
-    I just moved from my old mail server to DMS, but "it doesn't work"?
+    <span class="md-ellipsis">
+      I just moved from my old mail server to DMS, but "it doesn't work"?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#connection-refused-or-no-response-at-all" class="md-nav__link">
-    Connection refused or No response at all
+    <span class="md-ellipsis">
+      Connection refused or No response at all
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-can-i-authenticate-users-with-smtp_only1" class="md-nav__link">
-    How can I authenticate users with SMTP_ONLY=1?
+    <span class="md-ellipsis">
+      How can I authenticate users with SMTP_ONLY=1?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#common-errors" class="md-nav__link">
-    Common Errors
+    <span class="md-ellipsis">
+      Common Errors
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Common Errors">
@@ -1937,7 +2704,9 @@
         
           <li class="md-nav__item">
   <a href="#creating-an-alias-or-account-with-an-address-for-hostname" class="md-nav__link">
-    Creating an alias or account with an address for hostname
+    <span class="md-ellipsis">
+      Creating an alias or account with an address for hostname
+    </span>
   </a>
   
 </li>
@@ -1949,69 +2718,63 @@
       
         <li class="md-nav__item">
   <a href="#how-to-use-dms-behind-a-proxy" class="md-nav__link">
-    How to use DMS behind a proxy
+    <span class="md-ellipsis">
+      How to use DMS behind a proxy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-restrict-login-by-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to restrict login by IP?
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-to-adjust-settings-with-the-user-patchessh-script" class="md-nav__link">
-    How to adjust settings with the user-patches.sh script
+    <span class="md-ellipsis">
+      How to adjust settings with the user-patches.sh script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#how-to-ban-custom-ip-addresses-with-fail2ban" class="md-nav__link">
-    How to ban custom IP addresses with Fail2ban
+    <span class="md-ellipsis">
+      How to ban custom IP addresses with Fail2ban
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#what-to-do-in-case-of-spfforwarding-problems" class="md-nav__link">
-    What to do in case of SPF/Forwarding problems
+    <span class="md-ellipsis">
+      What to do in case of SPF/Forwarding problems
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#why-are-my-emails-not-being-delivered" class="md-nav__link">
-    Why are my emails not being delivered?
+    <span class="md-ellipsis">
+      Why are my emails not being delivered?
+    </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#special-directories" class="md-nav__link">
-    Special Directories
-  </a>
-  
-    <nav class="md-nav" aria-label="Special Directories">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-docker-datadmsconfig-directory" class="md-nav__link">
-    What About the docker-data/dms/config/ Directory?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-about-the-docker-datadmsmail-state-directory" class="md-nav__link">
-    What About the docker-data/dms/mail-state/ Directory?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#spamassasin" class="md-nav__link">
-    SpamAssasin
+    <span class="md-ellipsis">
+      SpamAssasin
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="SpamAssasin">
@@ -2019,35 +2782,45 @@
         
           <li class="md-nav__item">
   <a href="#how-can-i-manage-my-custom-spamassassin-rules" class="md-nav__link">
-    How can I manage my custom SpamAssassin rules?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-are-acceptable-sa_spam_subject-values" class="md-nav__link">
-    What are acceptable SA_SPAM_SUBJECT values?
+    <span class="md-ellipsis">
+      How can I manage my custom SpamAssassin rules?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#why-are-spamassassin-x-headers-not-inserted-into-my-subdomainexamplecom-subdomain-emails" class="md-nav__link">
-    Why are SpamAssassin x-headers not inserted into my subdomain.example.com subdomain emails?
+    <span class="md-ellipsis">
+      Why are SpamAssassin x-headers not inserted into my subdomain.example.com subdomain emails?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#how-can-i-make-spamassassin-better-recognize-spam" class="md-nav__link">
-    How can I make SpamAssassin better recognize spam?
+    <span class="md-ellipsis">
+      How can I make SpamAssassin better recognize spam?
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#how-do-i-have-more-control-about-what-spamassassin-is-filtering" class="md-nav__link">
-    How do I have more control about what SpamAssassin is filtering?
+    <span class="md-ellipsis">
+      How do I have more control about what SpamAssassin is filtering?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-send-quarantined-mail-to-a-mailbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I send quarantined mail to a mailbox?
+    </span>
   </a>
   
 </li>
@@ -2095,7 +2868,7 @@
 <h3 id="where-are-emails-stored"><a class="toclink" href="#where-are-emails-stored">Where are emails stored?</a></h3>
 <p>Mails are stored in <code>/var/mail/${domain}/${username}</code>. Since <code>v9.0.0</code> it is possible to add custom <code>user_attributes</code> for each accounts to have a different mailbox configuration (See <a href="https://github.com/docker-mailserver/docker-mailserver/pull/1792">#1792</a>).</p>
 <h3 id="how-are-imap-mailboxes-aka-imap-folders-set-up"><a class="toclink" href="#how-are-imap-mailboxes-aka-imap-folders-set-up">How are IMAP mailboxes (<em>aka IMAP Folders</em>) set up?</a></h3>
-<p><code>INBOX</code> is setup by default with the special IMAP folders <code>Drafts</code>, <code>Sent</code>, <code>Junk</code> and <code>Trash</code>. You can learn how to modify or add your own folders (<em>including additional special folders like <code>Archive</code></em>) by visiting our docs page <a href="../examples/use-cases/imap-folders"><em>Customizing IMAP Folders</em></a> for more information.</p>
+<p><code>INBOX</code> is setup by default with the special IMAP folders <code>Drafts</code>, <code>Sent</code>, <code>Junk</code> and <code>Trash</code>. You can learn how to modify or add your own folders (<em>including additional special folders like <code>Archive</code></em>) by visiting our docs page <a href="../examples/use-cases/imap-folders/"><em>Customizing IMAP Folders</em></a> for more information.</p>
 <h3 id="how-do-i-update-dms"><a class="toclink" href="#how-do-i-update-dms">How do I update DMS?</a></h3>
 <p><strong>Make sure to read the <a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/CHANGELOG.md">CHANGELOG</a></strong> before updating to new versions, to be prepared for possible breaking changes.</p>
 <p>Then, run the following commands:</p>
@@ -2143,6 +2916,10 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime:/etc/localtime:ro</span>
 </code></pre></div>
 <p>Optionally, you can set the <code>TZ</code> ENV variable; e.g. <code>TZ=Europe/Berlin</code>. Check <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">this list</a> for which values are allowed.</p>
+<h3 id="what-about-dns-servers"><a class="toclink" href="#what-about-dns-servers">What About DNS Servers?</a></h3>
+<p>Properly working DNS servers are crucial for differentiating spam from legitimate e-mails. Records like <code>SPF</code>, <code>DKIM</code> and <code>DMARC</code> records, as well as working name (resolving <code>A</code> records) and reverse name (resolving <code>PTR</code> records) resolution ensures legitimate e-mails arrive while e-mails that are more likely phishing and spam do not.</p>
+<p>Anti-spam measures (like SpamAssassin or Rspamd) make use of DNS block lists. To learn more check out our <a href="../config/security/rspamd/#rbls-real-time-blacklists-dnsbls-dns-based-blacklists">Rspamd documentation on this topic</a>. In case you want to utilize RBL/DNSBLs, you need a recursive DNS resolver (<em>not big custom resolvers like Cloudflare, Quad9, Google, etc.</em>).</p>
+<p>DMS does not integrate support for an internal DNS service as this is a <a href="https://github.com/orgs/docker-mailserver/discussions/3959#discussioncomment-8956322">responsibility that is sensitive to the host environment</a>. You can configure internal services within DMS to use your own managed DNS server, or configure for such at the host or container level (<em>such as with <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/#dns"><code>compose.yaml</code></a></em>).</p>
 <h3 id="what-is-the-file-format"><a class="toclink" href="#what-is-the-file-format">What is the file format?</a></h3>
 <p>All files are using the Unix format with <code>LF</code> line endings. Please do not use <code>CRLF</code>.</p>
 <h3 id="do-you-support-multiple-domains"><a class="toclink" href="#do-you-support-multiple-domains">Do you support multiple domains?</a></h3>
@@ -2184,7 +2961,7 @@ find<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</s
 <span class="na">imap</span><span class="w"> </span><span class="s">path prefix:   INBOX</span>
 
 <span class="c1"># SMTP</span>
-<span class="na">smtp</span><span class="w"> </span><span class="s">port:          25 or 587/465 with STARTTLS/SSL (recommended)</span>
+<span class="na">smtp</span><span class="w"> </span><span class="s">port:          587 or 465 with STARTTLS/SSL (recommended)</span>
 <span class="na">username</span><span class="o">:</span><span class="w">           </span><span class="s">&lt;user1@example.com&gt;</span>
 <span class="na">password</span><span class="o">:</span><span class="w">           </span><span class="s">&lt;mypassword&gt;</span>
 </code></pre></div>
@@ -2273,6 +3050,9 @@ Few examples of symptoms can be found <a href="https://github.com/docker-mailser
 <p><a href="../config/advanced/override-defaults/user-patches/">Using <code>user-patches.sh</code></a>, update the container file <code>/etc/postfix/main.cf</code> to include:</p>
 <div class="highlight"><pre><span></span><code><span class="na">proxy_interfaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">X.X.X.X (your public IP)</span>
 </code></pre></div>
+<p>For reverse proxy support you will want to view <a href="../examples/tutorials/mailserver-behind-proxy/">our dedicated guide</a>.</p>
+<h3 id="how-to-restrict-login-by-ip"><a class="toclink" href="#how-to-restrict-login-by-ip">How to restrict login by IP?</a></h3>
+<p>There are a few ways you could approach this, see <a href="https://github.com/orgs/docker-mailserver/discussions/3847">this discussion answer</a> for advice.</p>
 <h3 id="how-to-adjust-settings-with-the-user-patchessh-script"><a class="toclink" href="#how-to-adjust-settings-with-the-user-patchessh-script">How to adjust settings with the <code>user-patches.sh</code> script</a></h3>
 <p>Suppose you want to change a number of settings that are not listed as variables or add things to the server that are not included?</p>
 <p>DMS has a built-in way to do post-install processes. If you place a script called <strong><code>user-patches.sh</code></strong> in the config directory it will be run after all configuration files are set up, but before the postfix, amavis and other daemons are started.</p>
@@ -2326,38 +3106,27 @@ supervisorctl<span class="w"> </span>update
 <li><a href="https://www.mail-tester.com/">mail-tester</a> can test your deliverability.</li>
 <li><a href="https://www.helloinbox.email/">helloinbox</a> provides a checklist of things to improve your deliverability.</li>
 </ul>
-<h3 id="special-directories"><a class="toclink" href="#special-directories">Special Directories</a></h3>
-<h4 id="what-about-the-docker-datadmsconfig-directory"><a class="toclink" href="#what-about-the-docker-datadmsconfig-directory">What About the <code>docker-data/dms/config/</code> Directory?</a></h4>
-<p>This documentation and all example configuration files in the GitHub repository use <code>docker-data/dms/config/</code> to refer to the directory in the host that is mounted (e.g. via a bind mount) to <code>/tmp/docker-mailserver/</code> inside the container.</p>
-<p>Most configuration files for Postfix, Dovecot, etc. are persisted here. <a href="../config/advanced/optional-config/">Optional configuration</a> is stored here as well.</p>
-<h4 id="what-about-the-docker-datadmsmail-state-directory"><a class="toclink" href="#what-about-the-docker-datadmsmail-state-directory">What About the <code>docker-data/dms/mail-state/</code> Directory?</a></h4>
-<p>This documentation and all example configuration files in the GitHub repository use <code>docker-data/dms/mail-state/</code> to refer to the directory in the host that is mounted (e.g. via a bind mount) to <code>/var/mail-state/</code> inside the container.</p>
-<p>When you run DMS with the ENV variable <code>ONE_DIR=1</code> (default), this directory will provide support to persist Fail2Ban blocks, ClamAV signature updates, and the like when the container is restarted or recreated. Service data is <a href="https://github.com/docker-mailserver/docker-mailserver/blob/c7e498194546416fb7231cb03254e77e085d18df/target/scripts/startup/misc-stack.sh#L24-L33">relocated to the <code>mail-state</code> folder</a> for the following services: Postfix, Dovecot, Fail2Ban, Amavis, PostGrey, ClamAV, SpamAssassin, Rspamd &amp; Redis.</p>
 <h3 id="spamassasin"><a class="toclink" href="#spamassasin">SpamAssasin</a></h3>
 <h4 id="how-can-i-manage-my-custom-spamassassin-rules"><a class="toclink" href="#how-can-i-manage-my-custom-spamassassin-rules">How can I manage my custom SpamAssassin rules?</a></h4>
-<p>Antispam rules are managed in <code>docker-data/dms/config/spamassassin-rules.cf</code>.</p>
-<h4 id="what-are-acceptable-sa_spam_subject-values"><a class="toclink" href="#what-are-acceptable-sa_spam_subject-values">What are acceptable <code>SA_SPAM_SUBJECT</code> values?</a></h4>
-<p>For no subject set <code>SA_SPAM_SUBJECT=undef</code>.</p>
-<p>For a trailing white-space subject one can define the whole variable with quotes in <code>compose.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">environment</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;SA_SPAM_SUBJECT=[SPAM]</span><span class="nv"> </span><span class="s">&quot;</span>
-</code></pre></div>
+<p>Anti-spam rules are managed in <code>docker-data/dms/config/spamassassin-rules.cf</code>.</p>
 <h4 id="why-are-spamassassin-x-headers-not-inserted-into-my-subdomainexamplecom-subdomain-emails"><a class="toclink" href="#why-are-spamassassin-x-headers-not-inserted-into-my-subdomainexamplecom-subdomain-emails">Why are SpamAssassin <code>x-headers</code> not inserted into my <code>subdomain.example.com</code> subdomain emails?</a></h4>
 <p>In the default setup, amavis only applies SpamAssassin x-headers into domains matching the template listed in the config file (<code>05-domain_id</code> in the amavis defaults).</p>
 <p>The default setup <code>@local_domains_acl = ( ".$mydomain" );</code> does not match subdomains. To match subdomains, you can override the <code>@local_domains_acl</code> directive in the amavis user config file <code>50-user</code> with <code>@local_domains_maps = (".");</code> to match any sort of domain template.</p>
 <h4 id="how-can-i-make-spamassassin-better-recognize-spam"><a class="toclink" href="#how-can-i-make-spamassassin-better-recognize-spam">How can I make SpamAssassin better recognize spam?</a></h4>
 <p>Put received spams in <code>.Junk/</code> imap folder using <code>SPAMASSASSIN_SPAM_TO_INBOX=1</code> and <code>MOVE_SPAM_TO_JUNK=1</code> and add a <em>user</em> cron like the following:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># This assumes you&#39;re having `environment: ONE_DIR=1` in the `mailserver.env`,</span>
-<span class="c1"># with a consolidated config in `/var/mail-state`</span>
-<span class="c1">#</span>
-<span class="c1"># m h dom mon dow command</span>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>NOTE:</strong> This example assumes you have a <a href="../config/advanced/optional-config/#volumes-state"><code>/var/mail-state</code> volume</a> mounted.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># m h dom mon dow command</span>
 <span class="c1"># Everyday 2:00AM, learn spam from a specific user</span>
 <span class="na">0 2 * * * docker exec mailserver sa-learn --spam /var/mail/example.com/username/.Junk --dbpath /var/mail-state/lib-amavis/.spamassassin</span>
 </code></pre></div>
+</div>
 <p>With <code>docker-compose</code> you can more easily use the internal instance of <code>cron</code> within DMS. This is less problematic than the simple solution shown above, because it decouples the learning from the host on which DMS is running, and avoids errors if the mail server is not running.</p>
 <p>The following configuration works nicely:</p>
 <details class="example">
 <summary>Example</summary>
+<p><strong>NOTE:</strong> This example assumes you have a <a href="../config/advanced/optional-config/#volumes-state"><code>/var/mail-state</code> volume</a> mounted.</p>
 <p>Create a <em>system</em> cron file:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># in the compose.yaml root directory</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span>./docker-data/dms/cron
@@ -2366,10 +3135,7 @@ chown<span class="w"> </span>root:root<span class="w"> </span>./docker-data/dms/
 chmod<span class="w"> </span><span class="m">0644</span><span class="w"> </span>./docker-data/dms/cron/sa-learn
 </code></pre></div>
 <p>Edit the system cron file <code>nano ./docker-data/dms/cron/sa-learn</code>, and set an appropriate configuration:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># This assumes you&#39;re having `environment: ONE_DIR=1` in the env-mailserver,</span>
-<span class="c1"># with a consolidated config in `/var/mail-state`</span>
-<span class="c1">#</span>
-<span class="c1"># &#39;&gt; /dev/null&#39; to send error notifications from &#39;stderr&#39; to &#39;postmaster@example.com&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;&gt; /dev/null&#39; to send error notifications from &#39;stderr&#39; to &#39;postmaster@example.com&#39;</span>
 <span class="c1">#</span>
 <span class="c1"># m h dom mon dow user command</span>
 <span class="c1">#</span>
@@ -2410,40 +3176,36 @@ chmod<span class="w"> </span><span class="m">0644</span><span class="w"> </span>
 <span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./docker-data/dms/cron/sa-learn</span>
 </code></pre></div>
 </details>
-<p>With the default settings, SpamAssassin will require 200 mails trained for spam (for example with the method explained above) and 200 mails trained for ham (using the same command as above but using <code>--ham</code> and providing it with some ham mails). Until you provided these 200+200 mails, SpamAssassin will not take the learned mails into account. For further reference, see the <a href="https://wiki.apache.org/spamassassin/BayesNotWorking">SpamAssassin Wiki</a>.</p>
-<h4 id="how-do-i-have-more-control-about-what-spamassassin-is-filtering"><a class="toclink" href="#how-do-i-have-more-control-about-what-spamassassin-is-filtering">How do I have more control about what SpamAssassin is filtering?</a></h4>
-<p>By default, SPAM and INFECTED emails are put to a quarantine which is not very straight forward to access. Several config settings are affecting this behavior:</p>
-<p>First, make sure you have the proper thresholds set:</p>
-<div class="highlight"><pre><span></span><code><span class="na">SA_TAG</span><span class="o">=</span><span class="s">-100000.0</span>
-<span class="na">SA_TAG2</span><span class="o">=</span><span class="s">3.75</span>
-<span class="na">SA_KILL</span><span class="o">=</span><span class="s">100000.0</span>
-</code></pre></div>
+<p>With the default settings, SpamAssassin will require 200 mails trained for spam (for example with the method explained above) and 200 mails trained for ham (using the same command as above but using <code>--ham</code> and providing it with some ham mails).</p>
 <ul>
-<li>The very negative vaue in <code>SA_TAG</code> makes sure, that all emails have the SpamAssassin headers included.</li>
-<li><code>SA_TAG2</code> is the actual threshold to set the YES/NO flag for spam detection.</li>
-<li><code>SA_KILL</code> needs to be very high, to make sure nothing is bounced at all (<code>SA_KILL</code> superseeds <code>SPAMASSASSIN_SPAM_TO_INBOX</code>)</li>
+<li>Until you provided these 200+200 mails, SpamAssassin will not take the learned mails into account.</li>
+<li>For further reference, see the <a href="https://wiki.apache.org/spamassassin/BayesNotWorking">SpamAssassin Wiki</a>.</li>
 </ul>
-<p>Make sure everything (including SPAM) is delivered to the inbox and not quarantined:</p>
-<div class="highlight"><pre><span></span><code><span class="na">SPAMASSASSIN_SPAM_TO_INBOX</span><span class="o">=</span><span class="s">1</span>
+<h4 id="how-do-i-have-more-control-about-what-spamassassin-is-filtering"><a class="toclink" href="#how-do-i-have-more-control-about-what-spamassassin-is-filtering">How do I have more control about what SpamAssassin is filtering?</a></h4>
+<p>This is related to Amavis processing the mail after SpamAssassin has analyzed it and assigned a spam score.</p>
+<ul>
+<li>DMS provides some <a href="../config/environment/#spamassassin">common SA tunables via ENV</a>.</li>
+<li>Additional configuration can be managed with the DMS config volume by providing <code>docker-data/dms/config/amavis.cf</code>.</li>
+</ul>
+<h4 id="how-can-i-send-quarantined-mail-to-a-mailbox"><a class="toclink" href="#how-can-i-send-quarantined-mail-to-a-mailbox">How can I send quarantined mail to a mailbox?</a></h4>
+<p>SPAM and INFECTED emails that <a href="../config/environment/#sa_kill">reach the <code>SA_KILL</code> threshold are archived into quarantine</a>.</p>
+<p>Instead of a quarantine folder, you can use a dedicated mailbox instead. Create an account like <code>quarantine@example.com</code> and create <code>docker-data/dms/config/amavis.cf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="na">$clean_quarantine_to</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;quarantine\@example.com&quot;</span><span class="c1">;</span>
+<span class="na">$virus_quarantine_to</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;quarantine\@example.com&quot;</span><span class="c1">;</span>
+<span class="na">$banned_quarantine_to</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;quarantine\@example.com&quot;</span><span class="c1">;</span>
+<span class="na">$bad_header_quarantine_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;quarantine\@example.com&quot;</span><span class="c1">;</span>
+<span class="na">$spam_quarantine_to</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;quarantine\@example.com&quot;</span><span class="c1">;</span>
 </code></pre></div>
-<p>Use <code>MOVE_SPAM_TO_JUNK=1</code> or create a sieve script which puts spam to the Junk folder:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">require</span> <span class="p">[</span><span class="s">&quot;comparator-i;ascii-numeric&quot;</span><span class="p">,</span><span class="s">&quot;relational&quot;</span><span class="p">,</span><span class="s">&quot;fileinto&quot;</span><span class="p">];</span>
 
-<span class="nb">if</span> <span class="nb">header</span> <span class="nt">:contains</span> <span class="s">&quot;X-Spam-Flag&quot;</span> <span class="s">&quot;YES&quot;</span> <span class="p">{</span>
-  <span class="nb">fileinto</span> <span class="s">&quot;Junk&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="nb">elsif</span> <span class="nb">allof</span> <span class="p">(</span>
-   <span class="nb">not</span> <span class="nb">header</span> <span class="nt">:matches</span> <span class="s">&quot;x-spam-score&quot;</span> <span class="s">&quot;-*&quot;</span><span class="p">,</span>
-   <span class="nb">header</span> <span class="nt">:value</span> <span class="s">&quot;ge&quot;</span> <span class="nt">:comparator</span> <span class="s">&quot;i;ascii-numeric&quot;</span> <span class="s">&quot;x-spam-score&quot;</span> <span class="s">&quot;3.75&quot;</span> <span class="p">)</span> <span class="p">{</span>
-  <span class="nb">fileinto</span> <span class="s">&quot;Junk&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Create a dedicated mailbox for emails which are infected/bad header and everything amavis is blocking by default and put its address into <code>docker-data/dms/config/amavis.cf</code></p>
-<div class="highlight"><pre><span></span><code><span class="na">$clean_quarantine_to</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;amavis\@example.com&quot;</span><span class="c1">;</span>
-<span class="na">$virus_quarantine_to</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;amavis\@example.com&quot;</span><span class="c1">;</span>
-<span class="na">$banned_quarantine_to</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;amavis\@example.com&quot;</span><span class="c1">;</span>
-<span class="na">$bad_header_quarantine_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;amavis\@example.com&quot;</span><span class="c1">;</span>
-<span class="na">$spam_quarantine_to</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;amavis\@example.com&quot;</span><span class="c1">;</span>
-</code></pre></div>
+
+
+
+
+
+
+  
+  
+
 
 
 
@@ -2454,12 +3216,14 @@ chmod<span class="w"> </span><span class="m">0644</span><span class="w"> </span>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </button>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2490,10 +3254,11 @@ chmod<span class="w"> </span><span class="m">0644</span><span class="w"> </span>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>
