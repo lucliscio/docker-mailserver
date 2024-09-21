@@ -12,13 +12,13 @@
         <meta name="author" content="docker-mailserver (Github Organization)">
       
       
-        <link rel="canonical" href="https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/override-defaults/postfix/">
+        <link rel="canonical" href="https://docker-mailserver.github.io/docker-mailserver/edge/config/account-management/supplementary/oauth2/">
       
       
-        <link rel="prev" href="../dovecot/">
+        <link rel="prev" href="../master-accounts/">
       
       
-        <link rel="next" href="../user-patches/">
+        <link rel="next" href="../../../best-practices/autodiscover/">
       
       
       <link rel="icon" href="../../../../assets/logo/favicon-32x32.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Override the Default Configs | Postfix - Docker Mailserver</title>
+        <title>Account Management | OAuth2 Support - Docker Mailserver</title>
       
     
     
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#authentication-oauth2-oidc" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Override the Default Configs | Postfix
+              Account Management | OAuth2 Support
             
           </span>
         </div>
@@ -392,6 +397,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -553,8 +560,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -562,13 +571,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
@@ -582,7 +589,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             Account Management
@@ -596,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../account-management/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -657,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../account-management/provisioner/file/" class="md-nav__link">
+      <a href="../../provisioner/file/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../account-management/provisioner/ldap/" class="md-nav__link">
+      <a href="../../provisioner/ldap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -704,8 +711,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -713,13 +722,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
@@ -733,7 +740,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
             Supplementary
@@ -747,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../account-management/supplementary/master-accounts/" class="md-nav__link">
+      <a href="../master-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -765,10 +772,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../account-management/supplementary/oauth2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    OAuth2 Authentication
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -777,6 +804,50 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#config-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentik-with-roundcube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentik with Roundcube
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1129,8 +1200,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1140,11 +1209,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
         
           
           <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
@@ -1158,7 +1229,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             Advanced Configuration
@@ -1172,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../optional-config/" class="md-nav__link">
+      <a href="../../../advanced/optional-config/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1233,7 +1304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../maintenance/update-and-cleanup/" class="md-nav__link">
+      <a href="../../../advanced/maintenance/update-and-cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1259,8 +1330,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1270,11 +1339,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_3" >
         
           
           <label class="md-nav__link" for="__nav_4_8_3" id="__nav_4_8_3_label" tabindex="0">
@@ -1288,7 +1359,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_8_3">
             <span class="md-nav__icon md-icon"></span>
             Override the Default Configs
@@ -1302,7 +1373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dovecot/" class="md-nav__link">
+      <a href="../../../advanced/override-defaults/dovecot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1320,17 +1391,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../advanced/override-defaults/postfix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1339,7 +1403,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1352,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-patches/" class="md-nav__link">
+      <a href="../../../advanced/override-defaults/user-patches/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-sieve/" class="md-nav__link">
+      <a href="../../../advanced/mail-sieve/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-fetchmail/" class="md-nav__link">
+      <a href="../../../advanced/mail-fetchmail/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-getmail/" class="md-nav__link">
+      <a href="../../../advanced/mail-getmail/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1484,7 +1547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-forwarding/relay-hosts/" class="md-nav__link">
+      <a href="../../../advanced/mail-forwarding/relay-hosts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1505,7 +1568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-forwarding/aws-ses/" class="md-nav__link">
+      <a href="../../../advanced/mail-forwarding/aws-ses/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1526,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mail-forwarding/gmail-smtp/" class="md-nav__link">
+      <a href="../../../advanced/mail-forwarding/gmail-smtp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1555,7 +1618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../full-text-search/" class="md-nav__link">
+      <a href="../../../advanced/full-text-search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1576,7 +1639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes/" class="md-nav__link">
+      <a href="../../../advanced/kubernetes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1597,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ipv6/" class="md-nav__link">
+      <a href="../../../advanced/ipv6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1618,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../podman/" class="md-nav__link">
+      <a href="../../../advanced/podman/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2220,7 +2283,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2229,6 +2294,40 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#config-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentik-with-roundcube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentik with Roundcube
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2243,7 +2342,7 @@
                   
 
   
-    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/config/advanced/override-defaults/postfix.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/config/account-management/supplementary/oauth2.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2252,39 +2351,126 @@
     
       
     
-    <a href="https://github.com/docker-mailserver/docker-mailserver/raw/master/docs/content/config/advanced/override-defaults/postfix.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/docker-mailserver/docker-mailserver/raw/master/docs/content/config/account-management/supplementary/oauth2.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-  <h1>Postfix</h1>
-
-<p><a href="https://github.com/docker-mailserver/docker-mailserver/blob/master/target/postfix/main.cf">Our default Postfix configuration</a> can easily be extended to add parameters or modify existing ones by providing a <code>docker-data/dms/config/postfix-main.cf</code>. This file uses the same format as Postfix <code>main.cf</code> does (<a href="http://www.postfix.org/postconf.5.html">See official docs</a> for all parameters and syntax rules).</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>One can easily increase the <a href="http://www.postfix.org/postconf.5.html#compatibility_level">backwards-compatibility level</a> and set new Postscreen options:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># increase the compatibility level from 2 (default) to 3</span>
-<span class="na">compatibility_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
-<span class="c1"># set a threshold value for Spam detection</span>
-<span class="na">postscreen_dnsbl_threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
-</code></pre></div>
+<h1 id="authentication-oauth2-oidc"><a class="toclink" href="#authentication-oauth2-oidc">Authentication - OAuth2 / OIDC</a></h1>
+<p>This feature enables support for delegating DMS account authentication through to an external <em>Identity Provider</em> (IdP).</p>
+<div class="admonition warning">
+<p class="admonition-title">Receiving mail requires a DMS account to exist</p>
+<p>If you expect DMS to receive mail, you must provision an account into DMS in advance. Otherwise DMS has no awareness of your externally manmaged users and will reject delivery.</p>
+<p>There are <a href="https://github.com/docker-mailserver/docker-mailserver/issues/4090">plans to implement support to provision users through a SCIM 2.0 API</a>. An IdP that can operate as a SCIM Client (eg: Authentik) would then integrate with DMS for user provisioning. Until then you must keep your user accounts in sync manually via your configured <a href="../../../environment/#account_provisioner"><code>ACCOUNT_PROVISIONER</code></a>.</p>
 </div>
-<div class="admonition help">
-<p class="admonition-title">How are your changes applied?</p>
-<p>The custom configuration you supply is appended to the default configuration located at <code>/etc/postfix/main.cf</code>, and then <code>postconf -nf</code> is run to remove earlier duplicate entries that have since been replaced. This happens early during container startup before Postfix is started.</p>
-</div>
+<details class="info">
+<summary>How the feature works</summary>
+<ol>
+<li>A <strong>mail client must have support</strong> to acquire an OAuth2 token from your IdP (<em>however many clients lack generic OAuth2 / OIDC provider support</em>).</li>
+<li>The mail client then provides that token as the user password via the login mechanism <code>XOAUTH2</code> or <code>OAUTHBEARER</code>.</li>
+<li>DMS (Dovecot) will then check the validity of that token against the Authentication Service it was configured with.</li>
+<li>If the response returned is valid for the user account, authentication is successful.</li>
+</ol>
+<p><a href="https://developers.google.com/gmail/imap/xoauth2-protocol#the_sasl_xoauth2_mechanism"><strong>XOAUTH2</strong></a> (<em>Googles widely adopted implementation</em>) and <strong>OAUTHBEARER</strong> (<em>the newer variant standardized by <a href="https://datatracker.ietf.org/doc/html/rfc7628">RFC 7628</a> in 2015</em>) are supported as standards for verifying that a OAuth Bearer Token (<em><a href="https://datatracker.ietf.org/doc/html/rfc6750">RFC 6750</a> from 2012</em>) is valid at the identity provider that created the token. The token itself in both cases is expected to be can an opaque <em>Access Token</em>, but it is possible to use a JWT <em>ID Token</em> (<em>which encodes additional information into the token itself</em>).</p>
+<p>A mail client like Thunderbird has limited OAuth2 / OIDC support. The software maintains a hard-coded list of providers supported. Roundcube is a webmail client that does have support for generic providers, allowing you to integrate with a broader range of IdP services.</p>
 <hr />
-<p>Similarly, it is possible to add a custom <code>docker-data/dms/config/postfix-master.cf</code> file that will override the standard <code>master.cf</code>. <strong>Note</strong>: Each line in this file will be passed to <code>postconf -P</code>, i.e. <strong>the file is not appended as a whole</strong> to <code>/etc/postfix/master.cf</code> like <code>docker-data/dms/config/postfix-main.cf</code>! The expected format is <code>&lt;service_name&gt;/&lt;type&gt;/&lt;parameter&gt;</code>, for example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># adjust the submission &quot;reject_unlisted_recipient&quot; option</span>
-<span class="na">submission/inet/smtpd_reject_unlisted_recipient</span><span class="o">=</span><span class="s">no</span>
+<p><strong>Documentation for this feature is WIP</strong></p>
+<p>See the <a href="https://github.com/docker-mailserver/docker-mailserver/pull/3480">initial feature support</a> and <a href="https://github.com/docker-mailserver/docker-mailserver/issues?q=label%3Afeature%2Fauth-oidc">existing issues</a> for guidance that has not yet been documented officially.</p>
+</details>
+<details class="tip">
+<summary>Verify authentication works</summary>
+<p>If you have a compatible mail client you can verify login through that.</p>
+<hr />
+<details class="example">
+<summary>CLI - Verify with <code>curl</code></summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># Shell into your DMS container:</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dms<span class="w"> </span>bash
+
+<span class="c1"># Adjust these variables for the methods below to use:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AUTH_METHOD</span><span class="o">=</span><span class="s1">&#39;OAUTHBEARER&#39;</span><span class="w"> </span><span class="nv">USER_ACCOUNT</span><span class="o">=</span><span class="s1">&#39;hello@example.com&#39;</span><span class="w"> </span><span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="s1">&#39;DMS_YWNjZXNzX3Rva2Vu&#39;</span>
+
+<span class="c1"># Authenticate via IMAP (Dovecot):</span>
+curl<span class="w"> </span>--silent<span class="w"> </span>--url<span class="w"> </span><span class="s1">&#39;imap://localhost:143&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--login-options<span class="w"> </span><span class="s2">&quot;AUTH=</span><span class="si">${</span><span class="nv">AUTH_METHOD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--user<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--oauth2-bearer<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--request<span class="w"> </span><span class="s1">&#39;LOGOUT&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;dovecot: imap-login: Login: user=&lt;</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&gt;, method=</span><span class="si">${</span><span class="nv">AUTH_METHOD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>/var/log/mail/mail.log
+
+<span class="c1"># Authenticate via SMTP (Postfix), sending a mail with the same sender(from) and recipient(to) address:</span>
+<span class="c1"># NOTE: `curl` seems to require `--upload-file` with some mail content provided to test SMTP auth.</span>
+curl<span class="w"> </span>--silent<span class="w"> </span>--url<span class="w"> </span><span class="s1">&#39;smtp://localhost:587&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--login-options<span class="w"> </span><span class="s2">&quot;AUTH=</span><span class="si">${</span><span class="nv">AUTH_METHOD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--user<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--oauth2-bearer<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mail-from<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--mail-rcpt<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--upload-file<span class="w"> </span>-<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s1">&#39;RFC 5322 content - not important&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;postfix/submission/smtpd.*, sasl_method=</span><span class="si">${</span><span class="nv">AUTH_METHOD</span><span class="si">}</span><span class="s2">, sasl_username=</span><span class="si">${</span><span class="nv">USER_ACCOUNT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>/var/log/mail/mail.log
 </code></pre></div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>There should be no space between the parameter and the value.</p>
+<hr />
+<p><strong>Troubleshooting:</strong></p>
+<ul>
+<li>Add <code>--verbose</code> to the curl options. This will output the protocol exchange which includes if authentication was successful or failed.</li>
+<li>The above example chains the <code>curl</code> commands with <code>grep</code> on DMS logs (<em>for Dovecot and Postfix services</em>). When not running <code>curl</code> from the DMS container, ensure you check the logs correctly, or inspect the <code>--verbose</code> output instead.</li>
+</ul>
+</details>
+<div class="admonition warning">
+<p class="admonition-title"><code>curl</code> bug with <code>XOAUTH2</code></p>
+<p><a href="https://github.com/curl/curl/issues/10259#issuecomment-1907192556">Older releases of <code>curl</code> have a bug with <code>XOAUTH2</code> support</a> since <code>7.80.0</code> (Nov 2021) but fixed from <code>8.6.0</code> (Jan 2024). It treats <code>XOAUTH2</code> as <code>OAUTHBEARER</code>.</p>
+<p>If you use <code>docker exec</code> to run <code>curl</code> from within DMS, the current DMS v14 release (<em>Debian 12 with curl <code>7.88.1</code></em>) is affected by this bug.</p>
 </div>
-<p>Run <code>postconf -Mf</code> in the container without arguments to see the active master options.</p>
+</details>
+<h2 id="config-examples"><a class="toclink" href="#config-examples">Config Examples</a></h2>
+<h3 id="authentik-with-roundcube"><a class="toclink" href="#authentik-with-roundcube">Authentik with Roundcube</a></h3>
+<p>This example assumes you have already set up:</p>
+<ul>
+<li>A working DMS server</li>
+<li>An Authentik server (<a href="https://goauthentik.io/docs/installation/">documentation</a>)</li>
+<li>A Roundcube server (<a href="https://hub.docker.com/r/roundcube/roundcubemail">docker image</a> or <a href="https://github.com/roundcube/roundcubemail/wiki/Installation">bare metal install</a>)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Setup Instructions</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="1-docker-mailserver" name="__tabbed_1" type="radio" /><input id="2-authentik" name="__tabbed_1" type="radio" /><input id="3-roundcube" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="1-docker-mailserver">1. Docker Mailserver</label><label for="2-authentik">2. Authentik</label><label for="3-roundcube">3. Roundcube</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Update your Docker Compose ENV config to include:</p>
+<div class="highlight"><span class="filename">compose.yaml</span><pre><span></span><code><span class="na">services</span><span class="o">:</span>
+<span class="w">  </span><span class="na">mailserver</span><span class="o">:</span>
+<span class="w">    </span><span class="na">env</span><span class="o">:</span>
+<span class="w">      </span><span class="c1"># Enable the feature:</span>
+<span class="w">      </span><span class="na">-</span><span class="w"> </span><span class="s">ENABLE_OAUTH2=1</span>
+<span class="w">      </span><span class="c1"># Specify the user info endpoint URL of the oauth2 server for token inspection:</span>
+<span class="w">      </span><span class="na">-</span><span class="w"> </span><span class="s">OAUTH2_INTROSPECTION_URL=https://authentik.example.com/application/o/userinfo/</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Create a new OAuth2 provider.</li>
+<li>Note the client id and client secret. Roundcube will need this.</li>
+<li>Set the allowed redirect url to the equivalent of <code>https://roundcube.example.com/index.php/login/oauth</code> for your RoundCube instance.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Add the following to <code>oauth2.inc.php</code> (<a href="https://github.com/roundcube/roundcubemail/wiki/Configuration">documentation</a>):</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_provider&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;generic&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_provider_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Authentik&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_client_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&lt;insert client id here&gt;&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_client_secret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&lt;insert client secret here&gt;&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_auth_uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://authentik.example.com/application/o/authorize/&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_token_uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://authentik.example.com/application/o/token/&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_identity_uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://authentik.example.com/application/o/userinfo/&#39;</span><span class="p">;</span>
+
+<span class="c1">// Optional: disable SSL certificate check on HTTP requests to OAuth server. For possible values, see:</span>
+<span class="c1">// http://docs.guzzlephp.org/en/stable/request-options.html#verify</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_verify_peer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_scope&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;email openid profile&#39;</span><span class="p">;</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_identity_fields&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+
+<span class="c1">// Boolean: automatically redirect to OAuth login when opening Roundcube without a valid session</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;oauth_login_redirect&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
 
@@ -2297,6 +2483,8 @@
 
 
 
+
+  
 
 
 
